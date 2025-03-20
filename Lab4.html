@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Lab 4</title>    
+
+    <h1 id="myHeading1"></h1>
+
+    <script>
+        window.alert("Welcome to the store, [Potential New Customer]!!!")
+        var name, itemRequested, numItems;
+
+        name = window.prompt("Please Enter your Name- I'm NOT gonna ask twice!");
+        itemRequested = window.prompt("What item did you request?");
+        numItems = window.prompt("What is the number of items you ordered?");
+
+        now = new Date();
+        hour = now.getHours();
+        var greeting;
+        if(hour < 12) {
+            greeting = "Good Morning, " + name + ". Thanks for ordering!";
+        } else if (hour < 18) {
+            greeting = "Good Afternoon, " + name + ". Thanks for ordering!";
+        }
+        else {
+            greeting = "Good Evening, " + name + ". Thanks for ordering!";
+        }
+        document.getElementById("myHeading1").innerHTML = `${greeting}`; 
+    </script>
+<hr>
+</head>
+
+<body>
+    <h2>Here are all the inputs you entered:</h2>
+    
+    <p id="itemReq"></p>
+    <p id="numberOfItems"></p>
+    
+    <button type="button"
+        onclick="document.getElementById('heresAButton').innerHTML = 'Delivery Date: ' + newDate.toDateString()">
+        Click for your Order's Delivery Date
+    </button>
+    <p id='heresAButton'></p>
+
+    <script>
+        // Function to Add days to current date
+        function addDays(date, days) {
+            const newDate = new Date(date);
+            newDate.setDate(date.getDate() + days);
+            return newDate;
+        }
+
+        // Get the current date
+        const todayDate = new Date();
+        // Number of days that we want to add to the current date
+        const days = 7;
+        // Function call to add days
+        const newDate = addDays(todayDate, days);
+
+        document.getElementById("itemReq").innerHTML = `Item Requested: ${itemRequested}`;
+        document.getElementById("itemReq").innerHTML = `Item Requested: ${itemRequested}`;
+        document.getElementById("numberOfItems").innerHTML = `Number of Items: ${numItems}`;
+    </script>
+
+<hr>
+    
+<p style="padding: 0px 15px 0px 15px">This page was last updated on: 20 March, 2025 @ 6:29:59.999 pm EST   - Juan L</p>
+</body>
+
+</html>
