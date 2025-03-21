@@ -14,8 +14,18 @@
 
         name = window.prompt("Please Enter your Name- I'm NOT gonna ask twice!");
         itemRequested = window.prompt("What item did you request?");
-        numItems = window.prompt("What is the number of items you ordered?");
 
+        do {
+            if (numItems == '' || numItems < 0 || numItems > 99) {
+                numItems = window.prompt("ENTER ONLY THE NUMBERS 1 - 99!!!\n\nWhat is the number of items you ordered?");
+            } else {
+                numItems = window.prompt("What is the number of items you ordered?");
+            }
+            if (isNaN(numItems)) {
+            this.numItems = ''; // Clear input if not a number
+        } 
+        } while (numItems == '' || numItems < 0 || numItems > 99);
+        
         now = new Date();
         hour = now.getHours();
         var greeting;
