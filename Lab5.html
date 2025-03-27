@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+#demo {
+    padding: 0px 15px 0px 15px
+}
+</style>
+
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 5, brother</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <form id="demo">
+        <div>
+          <label for="first-name">First Name</label><br>
+          <input type="text" id="first-name">
+          <span id="inputError1" style="color: red;">
+        </div>
+        <div>
+          <label for="last-name">Last Name</label><br>
+          <input type="text" id="last-name">
+          <span id="inputError2" style="color: red;">
+        </div>
+        <div>
+          <label for="emailAdd">Email Address</label><br>
+          <input type="email" id="emailAdd">
+          <span id="inputError3" style="color: red;">
+        </div>
+        <div>
+            <label for="dob">Date of Birth</label><br>
+            <input type="date" id="dob">
+            <span id="inputError4" style="color: red;">
+        </div><br>
+        <div>
+            <label for="pw">Password</label><br>
+            <input type="password" id="pw">
+            <span id="inputError5" style="color: red;"><br>
+            <span id="pwWrong" style="color: red;">
+        </div><br>
+        <!--<div>
+            <label for="pw">Confirm Password</label><br>
+            <input type="password" name="pw"><br>
+        </div><br>-->
+        <button onclick="submitForm()">Submit</button><br>
+      </form>
+
+      <!-- <script>
+
+    </script> -->
+
+    <script>
+        function requiredField() { //This function could be written more efficiently lmao
+            const inputFirstName = document.getElementById("first-name");
+            const inputLastName = document.getElementById("last-name");
+            const inputEmail = document.getElementById("emailAdd");
+            const inputDOB = document.getElementById("dob");
+            const emptyPassword = document.getElementById("pw");
+            
+            const errorSpan1 = document.getElementById("inputError1");
+            const errorSpan2 = document.getElementById("inputError2");
+            const errorSpan3 = document.getElementById("inputError3");
+            const errorSpan4 = document.getElementById("inputError4");
+            const errorSpan5 = document.getElementById("inputError5");
+
+            if (inputFirstName.value.trim() === "") {
+                errorSpan1.textContent = "This field is required.";
+            } 
+            else {
+                errorSpan1.textContent = "";
+            }
+
+            if (inputLastName.value.trim() === "") {
+                errorSpan2.textContent = "This field is required.";
+            } 
+            else {
+                errorSpan2.textContent = "";
+            }
+
+            if (inputEmail.value.trim() === "") {
+                errorSpan3.textContent = "This field is required.";
+            } 
+            else {
+                errorSpan3.textContent = "";
+            }
+
+            if (inputDOB.value.trim() === "") {
+                errorSpan4.textContent = "\tThis field is required.";
+            } 
+            else {
+                errorSpan4.textContent = "";
+            }
+
+            if (emptyPassword.value.trim() === "") {
+                errorSpan5.textContent = "This field is required.";
+            } 
+            else {
+                errorSpan5.textContent = "";
+            }
+        }
+        
+        var inputFirstName = document.getElementById("first-name");
+        var inputLastName = document.getElementById("last-name");
+        var inputEmail = document.getElementById("emailAdd");
+        var inputDOB = document.getElementById("dob");
+        var emptyPassword = document.getElementById("pw");
+
+        inputFirstName.addEventListener("input", requiredField);
+        inputLastName.addEventListener("input", requiredField);
+        inputEmail.addEventListener("input", requiredField);
+        inputDOB.addEventListener("input", requiredField);
+        emptyPassword.addEventListener("input", requiredField);
+        
+        window.addEventListener("load", requiredField);
+
+        function pwCheck() {
+            const password = document.getElementById("pw");
+            const minLength = 8;
+            const maxLength = 25;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            const hasSpecialChar = /[!?]/.test(password);
+
+            const errorSpan6 = document.getElementById("pwWrong");
+
+            if (password.length < minLength || password.length > maxLength || !hasUpperCase || !hasLowerCase || !hasNumber || !hasSpecialChar) {
+                errorSpan6.textContent = "Password must be 8 - 25 character long,\n- contain at least one uppercase letter,\n- one lowercase letter,\n- one number,\n- and either special character '!' or '?'";
+            } 
+            else {
+                errorSpan6.textContent = "";
+            }
+        }
+
+        var password = document.getElementById("pw");
+        password.addEventListener("input", pwCheck);
+
+        window.addEventListener("load", pwCheck);
+
+        function submitForm() { //This function only executes if requiredField + pwCheck functions allow
+            
+            var elements = document.getElementbyID("myForm").elements;
+            var elemsArr1 = Array.from(elements);
+            var submission = {};
+            elemsArr1.forEach((element) => console.log(element.value));
+
+            //element.name + " " + 
+            
+            var person = {//create the Person Object, NOT scoped
+                firstName: elemsArr1[0],
+                lastName: elemsArr1[1],
+                fullName: firstName + " " + lastName,
+                email: elemsArr1[2],
+                dob: elemsArr1[3],
+                pw: elemsArr1[4],
+            };
+            const charArray = [...person.pw];
+            var hiddenPW = "";
+            for (var i = 0; i < charArray.length; i++) {
+                hiddenPW += "* ";
+            }
+
+        }
+
+
+    </script>
+
+    <hr>
+    
+<p id="demo"><strong>This page was last updated on: 27 March, 2025 @ 18:29:59 EST   - Juan L</strong></p>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
