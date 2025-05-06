@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Final</title>
+
+    <div class="jumbotron jumbotron-fluid">
+        <style>
+            div {
+                padding: 12px;
+                margin: 0px;
+            }
+            </style>
+        <h1 class="display-2">Currency Converter</h1>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" role="button" onclick="getLatest()">Trigger API</a>
+        </p>
+    </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <p id="baseCurrName">[Placeholder]</p>
+    <p id="exchangeRate">[Placeholder]</p>
+    <p id="exchangeValue">[Placeholder]</p>
+  
+    <!-- Need to add form checking!!! -->
+    <label for="baseCurrency" class="form-label">Base Currency</label>
+    <input class="form-control" list="currency1" id="baseCurrency" placeholder="Type to search...">
+    <datalist id="currency1">
+        <option value="USD">USD - US Dollar</option>
+        <option value="AFN">AFN - Afghan Afghani</option>
+        <option value="ALL">ALL - Albanian Lek</option>
+        <option value="AMD">AMD - Armenian Dram</option>
+        <option value="ANG">ANG - Dutch Guilder</option>
+        <option value="AOA">AOA - Angolan Kwanza</option>
+        <option value="ARS">ARS - Aregentine Peso</option>
+        <option value="AUD">AUD - Australian Dollarydoo</option>
+        <option value="AWG">AWG - Aruban Florin</option>
+        <option value="AZN">AZN - Azerbaijani Manat</option>
+        <option value="BAM">BAM - Bosnian Convertible Mark</option> 
+        <option value="BBD">BBD - Barbadian Dollar</option> 
+        <option value="BDT">BDT - Bangladeshi Taka</option> 
+        <option value="BGN">BGN - Bulgarian Lev</option> 
+        <option value="BHD">BHD - Bahraini Dinar</option> 
+        <option value="BIF">BIF - Burundian Franc</option> 
+        <option value="BMD">BMD - Bermudan Dollar</option> 
+        <option value="BND">BND - Brunei Dollar</option>
+        <option value="BOB">BOB - Bolivian Boliviano</option>
+        <option value="BRL">BRL - Brazilian Real</option>
+        <option value="BSD">BSD - Bahamian Dollar</option>
+        <option value="BTN">BTN - Bhutanese Ngultrum</option>
+        <option value="BWP">BWP - Botswana Pula</option>
+        <option value="BYN">BYN - Belarusian Third ruble</option>
+        <option value="BYR">BYN - Belarusian Second ruble</option>
+        <!-- "BZD": 2,
+        "CAD": 1.3807601605,
+        "CDF": 2848.8725459251,
+        "CHF": 0.8233400992,
+        "CLF": 0.0237900045,
+        "CLP": 946.1786371738,
+        "CNY": 7.2637208793,
+        "COP": 4249.037115536,
+        "CRC": 506.1542063061,
+        "CUC": 1,
+        "CUP": 24,
+        "CVE": 97.3846071985,
+        "CZK": 21.9584023118,
+        "DAI": 0.9991775804,
+        "DJF": 177.721,
+        "DKK": 6.5877610353,
+        "DOP": 58.7136093593,
+        "DOT": 0.2537683191,
+        "DZD": 132.9320803993,
+        "EGP": 50.6750159898,
+        "ERN": 15,
+        "ETB": 131.4489547578,
+        "ETH": 0.0005580064,
+        "EUR": 0.8825000944,
+        "FJD": 2.2848302684,
+        "FKP": 0.7527768316,
+        "GBP": 0.7528501183,
+        "GEL": 2.7532804099,
+        "GGP": 0.7527769336,
+        "GHS": 13.8888619356,
+        "GIP": 0.752776739,
+        "GMD": 71.8361440096,
+        "GNF": 8675.8824771629,
+        "GTQ": 7.6763215058,
+        "GYD": 208.7203317837,
+        "HKD": 7.7495009233,
+        "HNL": 25.7779230008,
+        "HRK": 6.3732710868,
+        "HTG": 132.752153991,
+        "HUF": 356.4527686991,
+        "IDR": 16400.0836643,
+        "ILS": 3.6003806577,
+        "IMP": 0.7527766739,
+        "INR": 84.4430510619,
+        "IQD": 1307.0589750029,
+        "IRR": 41966.384675174,
+        "ISK": 128.7861252127,
+        "JEP": 0.7527769977,
+        "JMD": 158.002860023,
+        "JOD": 0.71,
+        "JPY": 144.3317859799,
+        "KES": 129.4904209606,
+        "KGS": 87.9475802773,
+        "KHR": 4000.4524598299,
+        "KMF": 434.1848912875,
+        "KPW": 899.9639772106,
+        "KRW": 1397.8530008767,
+        "KWD": 0.3065000511,
+        "KYD": 0.83333,
+        "KZT": 515.6052043324,
+        "LAK": 21509.323424549,
+        "LBP": 89459.317893364,
+        "LKR": 299.7199781663,
+        "LRD": 198.9452787033,
+        "LSL": 18.6862037364,
+        "LTC": 0.0117447652,
+        "LTL": 3.0480916918,
+        "LVL": 0.6204236992,
+        "LYD": 5.4526206642,
+        "MAD": 9.2578415603,
+        "MDL": 17.0556726046,
+        "MGA": 4457.7731545858,
+        "MKD": 53.9481973777,
+        "MMK": 2096.4182088455,
+        "MNT": 3572.1217838865,
+        "MOP": 7.9939510096,
+        "MRO": 356.999828,
+        "MUR": 45.1809949915,
+        "MVR": 15.4512627689,
+        "MWK": 1731.8112583428,
+        "MXN": 19.5981333595,
+        "MYR": 4.2150204769,
+        "MZN": 63.4640410642,
+        "NAD": 18.3364229933,
+        "NGN": 1598.6540877934,
+        "NIO": 36.8332569182,
+        "NOK": 10.4115118349,
+        "NPR": 135.3743390757,
+        "NZD": 1.6739903098,
+        "OMR": 0.3838100428,
+        "OP": 1.4957437525,
+        "PAB": 0.9992101991,
+        "PEN": 3.6466404656,
+        "PGK": 4.0868905735,
+        "PHP": 55.4451700347,
+        "PKR": 280.6825913806,
+        "PLN": 3.7708906811,
+        "PYG": 8019.3948564424,
+        "QAR": 3.6362406691,
+        "RON": 4.3985308475,
+        "RSD": 103.2884794493,
+        "RUB": 82.6535258326,
+        "RWF": 1410.0191727872,
+        "SAR": 3.7433404929,
+        "SBD": 8.505565375,
+        "SCR": 14.7144417726,
+        "SDG": 601.5,
+        "SEK": 9.6210117295,
+        "SGD": 1.2940901793,
+        "SHP": 0.7528500839,
+        "SLL": 22618.351290036,
+        "SOL": 0.0069798856,
+        "SOS": 573.7955372786,
+        "SRD": 36.6931739014,
+        "STD": 21776.143248502,
+        "SVC": 8.75,
+        "SYP": 13001.873891501,
+        "SZL": 18.3544119765,
+        "THB": 33.0272245054,
+        "TJS": 10.4456917563,
+        "TMT": 3.5,
+        "TND": 2.9571803233,
+        "TOP": 2.3719803603,
+        "TRY": 38.570566076,
+        "TTD": 6.744341192,
+        "TWD": 29.6768051192,
+        "TZS": 2669.8139975977,
+        "UAH": 41.6834659798,
+        "UGX": 3659.5375578257,
+        "USD": 1,
+        "UYU": 41.9566771704,
+        "UZS": 12916.706565799,
+        "VEF": 8843560.7910217,
+        "VND": 25954.019950173,
+        "VUV": 120.9378345729,
+        "WST": 2.766240104,
+        "XAF": 578.9984995124,
+        "XAG": 0.0312131947,
+        "XAU": 0.0003064145,
+        "XCD": 2.7,
+        "XDR": 0.7399200897,
+        "XOF": 578.9985072136,
+        "XPD": 0.0010461785,
+        "XPF": 105.2466409557,
+        "XPT": 0.0010411189,
+        "XRP": 0.4667137821,
+        "YER": 243.9824794083,
+        "ZAR": 18.3727819875,
+        "ZMK": 9001.2,
+        "ZMW": 27.8174853401,
+        "ZWL": 67033.077994404 -->
+    </datalist>
+
+    <!-- Need to add form checking!!! -->
+    <label for="exchangeCurrency" class="form-label">Exchange Currency</label>
+    <input class="form-control" list="currency2" id="exchangeCurrency" placeholder="Type to search...">
+    <datalist id="currency2">
+        <option value="USD">US Dollar</option>
+        <option value="AFN">Afghan Afghani</option>
+        <option value="ALL">Albanian Lek</option>
+        <option value="AMD">Armenian Dram</option>
+        <option value="ANG">Dutch Guilder</option>
+        <option value="AOA">Angolan Kwanza</option>
+        <option value="ARS">Aregentine Peso</option>
+        <option value="AUD">Australian Dollarydoo</option>
+        <option value="AWG">Aruban Florin</option>
+        <option value="AZN">Azerbaijani Manat</option>
+        <option value="BAM">Bosnian Convertible Mark</option> 
+        <option value="BBD">Barbadian Dollar</option> 
+        <option value="BDT">Bangladeshi Taka</option> 
+        <option value="BGN">Bulgarian Lev</option> 
+        <option value="BHD">Bahraini Dinar</option> 
+        <option value="BIF">Burundian Franc</option> 
+        <option value="BMD">Bermudan Dollar</option> 
+        <option value="BND">Brunei Dollar</option>
+        <option value="BOB">Bolivian Boliviano</option>
+        <option value="BRL">Brazilian Real</option>
+        <option value="BSD">Bahamian Dollar</option>
+        <option value="BTN">Bhutanese ngultrum</option>
+        <option value="BWP">Botswana pula</option>
+        <option value="BYN">Belarusian Third ruble</option>
+        <option value="BYR">BYN - Belarusian Second ruble</option>
+        <option value="EUR">EUR</option>
+        <option value="ZWL">ZWL</option>
+    </datalist>
+
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <input type="number" class="form-control" required name="something" min="0" value="1.00" step=".01" id="inputMoneyAmount" aria-describedby="inputMoneyAmountHelp">
+        </div>
+        <div class="col-auto">
+          <span id="inputMoneyAmountHelp" class="form-text">
+            Only 2 decimal places allowed.
+          </span>
+        </div>
+      </div>
+
+    <script>
+        window.onload = async function() {
+        try {
+            const response = await fetch('your-api-endpoint');
+            const data = await response.json();
+            // Process the data
+            console.log(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
+    </script>
+
+    <script>
+        //This script employs an async function to GET API data from the endpoint `.../latest`
+        //The async function take user inputs to generate a url that grabs a truncated JSON file with data relevant to the user's search/input parameters
+
+        const decimalPlaces = 10; //Set to '10' for max decimal places because that's the most the API can give me
+
+        async function getLatest() 
+        {
+        //User inputs grabbed from form entry
+        const baseDropdown = document.getElementById("baseCurrency");
+        const exchangeDropdown = document.getElementById("exchangeCurrency");
+        const inputAmount = document.getElementById("inputMoneyAmount");
+        const selectedBase = baseDropdown.value;
+        const selectedExchange = exchangeDropdown.value;
+        const moneyAmount = inputAmount.value;
+
+        //Example of appended string: `currencies=USD&base=EUR&format=JSON&places=2&amount=1`
+        const paramsString = `currencies=${selectedExchange}&base=${selectedBase}&format=JSON&places=${decimalPlaces}&amount=${moneyAmount}`; //Need to change amount later!!!!
+        const paramsObj = { currencies: selectedExchange, base: selectedBase, format: "JSON", places: decimalPlaces, amount: moneyAmount};
+        
+        const thing = new URLSearchParams(paramsObj);
+        thing.set('api_key', 'fxr_live_a5ff0b1d729a595443b348c5474a17b12e99');
+
+        //API call based on parameters being appended to end point url
+        const url = `https://api.fxratesapi.com/latest?${thing.toString()}`;
+        const options = { method: 'GET',};
+        const response = await fetch(url, options);
+        const latestObj = await response.json(); //This line accomplishes JSON parsing
+
+        //ExchangeValue below is autoformatted to calculate (MoneyAmount * exchangeValue)
+        const baseName = latestObj.base;
+        const exchangeValue = latestObj.rates[selectedExchange];
+
+        //Fetching url JSON retrieves => moneyAmount * (exchange rate of currency)
+        //This is why we need to undo conversion to get exchangeRate
+        let exchangeRate = exchangeValue / moneyAmount ; 
+
+        document.getElementById("baseCurrName").innerHTML = baseName;
+        document.getElementById("exchangeRate").innerHTML = exchangeRate.toFixed(4); //Prints exchange rate of trading '1' of base currency to exchange currency
+        document.getElementById("exchangeValue").innerHTML = exchangeValue.toFixed(2); //Prints => moneyAmount * (exchange rate of currency)
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+
+<hr>
+<p style="padding: 0px 15px 0px 15px"><strong>This page was last updated on: 08 May, 2025 @ 6:29:59pm EST   - Juan L</strong></p>
+
+</html>
