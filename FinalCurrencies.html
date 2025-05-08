@@ -109,97 +109,23 @@
     </div> 
   </div>
 
+  <p></p>
+
   <div class="row align-items-md-stretch justify-content-center"> 
-    <div class="col-md-9"> 
+    <div class="col-md-9 just"> 
+      <p id="totalCurrencies" align="end"></p>
+    </div>
+  </div>
+
+  <div class="row align-items-md-stretch justify-content-center"> 
+    <div class="col-md-9 just"> 
       <div class="h-100 p-4 bg-body-tertiary border rounded-3"> 
-        <h2 align="center">Live Currency Conversion</h2>
+        <h2 align="center">Global Currency List</h2>
         <br>
-        <nav class="navbar bg-body-secondary">
-          <!-- <div class="container justify-content-center">
-            <h3 class="display-7 fw-bold">Live Currrency Conversion</h3> 
-          </div> -->
-          <div class="container">
-            <div class="col-md-4">
-              <!-- Need to add form checking!!! -->
-              <label for="baseCurrency" class="form-label">Base Currency</label>
-              <input class="form-control" list="currencyList" id="baseCurrency" placeholder="Type to search...">
-              <datalist id="currencyList"></datalist>
-            </div>
-
-            <div class="col-auto justify-content-center">
-              <button class="btn btn-outline-primary justify-content-center" type="button" onclick="swapInputValues('baseCurrency', 'exchangeCurrency')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="78" height="20" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 17 17">
-                  <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"/>
-                </svg>  
-              </button>
-            </div>
-
-            <div class="col-md-4">
-              <!-- Need to add form checking!!! -->
-              <label for="exchangeCurrency" class="form-label just">Exchange Currency</label>
-              <input class="form-control" list="currencyList" id="exchangeCurrency" placeholder="Type to search...">
-              <datalist id="currencyList"></datalist>
-            </div>
-          </div>
-        </nav>
-
-        <nav class="navbar bg-body-secondary">
-          <div class="container">
-            <!-- Need to add form checking!!! -->
-            <div class="col-md-4">
-              <label for="inputMoneyAmount" class="form-label just">Enter Money Amount</label>
-              <input type="number" class="form-control" required name="something" min="0" value="1.00" step=".01" id="inputMoneyAmount" aria-describedby="inputMoneyAmountHelp">
-
-            </div>
-
-            <div class="col-auto justify-content-center">
-              <p class="lead">
-                <a class="btn btn-primary btn-lg" role="button" onclick="getLatest()">Convert Currency</a>
-              </p>
-            </div>
-
-            <div class="col-md-4">
-              <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-                <!-- <p id="baseCurrName" style="text-align:center">[ Currency Names Populates Here ]</p> -->
-                <p id="exchangeRate" style="text-align:center">[ Exchange Rate Populates Here ]</p>
-                <p id="exchangeValue" style="text-align:center">[ Exchange Amount Populates Here ]</p>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <dl id="currencyList" align="center"></dl>
       </div> 
     </div>
-
   </div>
-
-<p></p>
-
-  <div class="row align-items-md-stretch justify-content-center"> 
-    <div class="col-md-9"> 
-      <p align="right" id="timeStamp">
-    </div>
-  </div>
-
-  <!-- <div class="row align-items-md-stretch justify-content-center"> 
-    <div class="col-md-9"> 
-      <div class="h-100 p-4 bg-body-tertiary border rounded-3">
-        <div class="row justify-content-center">
-          <div class="col-5">
-            <p></p>
-          </div>
-          <div class="col-1 justify-content-center">
-            huh
-          </div>
-          <div class="col-5">
-            huh
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div> -->
-
 
   <script>
       //This function fills the Base/Exchange/Explore Currencies'Search/Selection List with .../currencies endpoint's list of currencies
@@ -215,15 +141,36 @@
 
           const numberOfKeys = Object.keys(currenciesObj).length;
 
+          document.getElementById("totalCurrencies").innerHTML = "Woah, there's [ " + numberOfKeys + " ] total currencies in this list!"
+
           for (let i = 0; i < numberOfKeys; i++) {
               let select = document.getElementById("currencyList");
-              const option = document.createElement('option');
+              const listKey = document.createElement('dt');
+              const listKeyDetails1 = document.createElement('dd');
+              const listKeyDetails2 = document.createElement('dd');
+              const listKeyDetails3 = document.createElement('dd');
+              const listKeyDetails4 = document.createElement('dd');
+              const listKeyDetails5 = document.createElement('dd');
               const currentKey = Object.keys(currenciesObj)[i];
-              const currentText = currentKey.concat(" - ", currenciesObj[currentKey].name);
-              option.id = currentKey;
-              option.text = currentText;
-              console.log(option);
-              select.append(option); //Populates data list for currency options
+              let currentText = currentKey.concat(" - ", currenciesObj[currentKey].name);
+
+              listKey.append(currentText);
+              select.append(listKey); //Populates data list for currency options
+
+              currentText = "Currency Code: " + currenciesObj[currentKey].code;
+              listKeyDetails1.append(currentText);
+              select.append(listKeyDetails1);
+              currentText = "Decimal Digits Used: " + currenciesObj[currentKey].decimal_digits;
+              listKeyDetails2.append(currentText);
+              select.append(listKeyDetails2);
+              currentText = "Symbol: " + currenciesObj[currentKey].symbol;
+              listKeyDetails3.append(currentText);
+              select.append(listKeyDetails3);
+              currentText = "Native Symbol Used: " + currenciesObj[currentKey].symbol_native;
+              listKeyDetails4.append(currentText);
+              select.append(listKeyDetails4);
+              listKeyDetails5.append("--------------------------------------------------------------");
+              select.append(listKeyDetails5);
           }
       };
 
@@ -244,63 +191,6 @@
       //truncateString(str) solely exists to truncate string value from baseDropdown.value & exchangeDropdown.value just so that 
       //a proper search can be done to retrieve currency data from the API via URLSearchParams(paramsObj)
       function truncateString(str) { return str.slice(0, 3); }
-
-      const decimalPlaces = 10; //Set to '10' for max decimal places because that's the most the API can give me
-
-      //The getLatest() async function GETs API data from the endpoint `.../latest`
-      //The async function take user inputs to generate a url that grabs a truncated JSON file with data relevant to the user's search/input parameters
-      async function getLatest() 
-      {
-      //User inputs grabbed from form entry
-      const baseDropdown = document.getElementById("baseCurrency");
-      const exchangeDropdown = document.getElementById("exchangeCurrency");
-      const inputAmount = document.getElementById("inputMoneyAmount");
-      const timeStamp = document.getElementById("timeStamp");
-
-      const selectedBase = truncateString(baseDropdown.value);
-      const selectedExchange = truncateString(exchangeDropdown.value);
-      const moneyAmount = inputAmount.value;
-
-      //Example of appended string: `currencies=USD&base=EUR&format=JSON&places=2&amount=1`
-      const paramsString = `currencies=${selectedExchange}&base=${selectedBase}&format=JSON&places=${decimalPlaces}&amount=${moneyAmount}`;
-      const paramsObj = { currencies: selectedExchange, base: selectedBase, format: "JSON", places: decimalPlaces, amount: moneyAmount};
-      
-      const thing = new URLSearchParams(paramsObj);
-      thing.set('api_key', 'fxr_live_a5ff0b1d729a595443b348c5474a17b12e99');
-
-      //API call based on parameters being appended to end point url
-      const url = `https://api.fxratesapi.com/latest?${thing.toString()}`;
-      const options = { method: 'GET',};
-      const response = await fetch(url, options);
-      const latestObj = await response.json(); //This line accomplishes JSON parsing
-
-      //ExchangeValue below is autoformatted to calculate (MoneyAmount * exchangeValue)
-      const baseName = latestObj.base;
-      const exchangeValue = latestObj.rates[selectedExchange];
-      const retrievalTime = "Conversion Time: " + latestObj.date;
-
-      //Fetching url JSON retrieves => moneyAmount * (exchange rate of currency)
-      //This is why we need to undo conversion to get exchangeRate
-      let exchangeRate = exchangeValue / moneyAmount ; 
-
-      let tempString1 = "<u>Exchange Rate</u>\n" + currenciesObj[baseName].symbol_native + " 1.00 , " + currenciesObj[baseName].name_plural + "\n=\n" + currenciesObj[selectedExchange].symbol_native + " " + exchangeRate.toFixed(6) + " , " + currenciesObj[selectedExchange].name_plural;
-      let htmlString1 = tempString1.toString();
-
-      let tempString2 = "<u>Exchange Value</u>\n<b>" + currenciesObj[baseName].symbol_native + " " + moneyAmount + " = " + currenciesObj[selectedExchange].symbol_native + " " + exchangeValue.toFixed(2) + "</b>";
-      let htmlString2 = tempString2.toString();
-
-      //document.getElementById("baseCurrName").innerHTML = "[ " + baseName + " -> " + selectedExchange + " ] ";
-      document.getElementById("exchangeRate").innerHTML =  htmlString1.replace(/\n/g, "<br>"); //Prints exchange rate of trading '1' of base currency to exchange currency
-      document.getElementById("exchangeValue").innerHTML = htmlString2.replace(/\n/g, "<br>"); //Prints => moneyAmount * (exchange rate of currency)
-      document.getElementById("timeStamp").innerHTML = retrievalTime.toString();
-
-      // const baseSymbol = currenciesObj[baseName].symbol_native;
-      // const exchangeSymbol = currenciesObj[selectedExchange].symbol_native;
-      
-      // let tempString4 = baseSymbol + " 1 , " + baseName + " = " + exchangeSymbol + " " + exchangeRate.toFixed(4);
-
-
-      }
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
