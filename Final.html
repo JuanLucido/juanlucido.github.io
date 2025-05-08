@@ -35,7 +35,7 @@
                   <li><a class="dropdown-item" href="https://github.com/JuanLucido">Juan's Github</a></li>
                   <li><a class="dropdown-item" href="https://github.com/JuanLucido/juanlucido.github.io">Site Repository</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">API Documentation</a></li>
+                  <li><a class="dropdown-item" href="https://docs.google.com/document/d/1Na9xr3_XQWnOw4OB5CGw_taaFtGSgZKi/edit?usp=sharing&ouid=112771458260686512390&rtpof=true&sd=true">API Documentation</a></li>
                   <li><a class="dropdown-item" href="#">Google Slide Presentation</a></li>
                 </ul>
               </li>
@@ -54,7 +54,25 @@
 </head>
 
 <body>
-  <div class="container-fluid" id="gradient" style="height:150px; background-image:linear-gradient(pink, blue);"></div>
+  <div class="container-fluid" id="gradient" style="height:150px; background-image:linear-gradient(pink, blue);">
+    <div align="center">
+      <div class="col-12">
+        <p>____________</p>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16" style = "color:gold;">
+        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-currency-euro" viewBox="0 0 16 16" style = "color:gold;">
+        <path d="M4 9.42h1.063C5.4 12.323 7.317 14 10.34 14c.622 0 1.167-.068 1.659-.185v-1.3c-.484.119-1.045.17-1.659.17-2.1 0-3.455-1.198-3.775-3.264h4.017v-.928H6.497v-.936q-.002-.165.008-.329h4.078v-.927H6.618c.388-1.898 1.719-2.985 3.723-2.985.614 0 1.175.05 1.659.177V2.194A6.6 6.6 0 0 0 10.341 2c-2.928 0-4.82 1.569-5.244 4.3H4v.928h1.01v1.265H4v.928z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-currency-pound" viewBox="0 0 16 16" style = "color:gold;">
+        <path d="M4 8.585h1.969c.115.465.186.939.186 1.43 0 1.385-.736 2.496-2.075 2.771V14H12v-1.24H6.492v-.129c.825-.525 1.135-1.446 1.135-2.694 0-.465-.07-.913-.168-1.352h3.29v-.972H7.22c-.186-.723-.372-1.455-.372-2.247 0-1.274 1.047-2.066 2.58-2.066a5.3 5.3 0 0 1 2.103.465V2.456A5.6 5.6 0 0 0 9.348 2C6.865 2 5.322 3.291 5.322 5.366c0 .775.195 1.515.399 2.247H4z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-currency-yen" viewBox="0 0 16 16" style = "color:gold;">
+        <path d="M8.75 14v-2.629h2.446v-.967H8.75v-1.31h2.445v-.967H9.128L12.5 2h-1.699L8.047 7.327h-.086L5.207 2H3.5l3.363 6.127H4.778v.968H7.25v1.31H4.78v.966h2.47V14h1.502z"/>
+      </svg>
+    </div>
+  </div>
 
   <div class="p-4 mb-4 bg-body-tertiary rounded-3"> 
     <div class="container-fluid"> 
@@ -159,7 +177,7 @@
             </div>
 
             <div class="col-md-4">
-              <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+              <div class="p-3 text-primary-emphasis bg-primary-subtle border border-warning rounded-3">
                 <!-- <p id="baseCurrName" style="text-align:center">[ Currency Names Populates Here ]</p> -->
                 <p id="exchangeRate" style="text-align:center">[ Exchange Rate Populates Here ]</p>
                 <p id="exchangeValue" style="text-align:center">[ Exchange Amount Populates Here ]</p>
@@ -179,27 +197,6 @@
       <p align="right" id="timeStamp">
     </div>
   </div>
-
-  <!-- <div class="row align-items-md-stretch justify-content-center"> 
-    <div class="col-md-9"> 
-      <div class="h-100 p-4 bg-body-tertiary border rounded-3">
-        <div class="row justify-content-center">
-          <div class="col-5">
-            <p></p>
-          </div>
-          <div class="col-1 justify-content-center">
-            huh
-          </div>
-          <div class="col-5">
-            huh
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div> -->
-
 
   <script>
       //This function fills the Base/Exchange/Explore Currencies'Search/Selection List with .../currencies endpoint's list of currencies
